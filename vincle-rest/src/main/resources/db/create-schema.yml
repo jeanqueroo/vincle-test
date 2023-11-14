@@ -1,0 +1,116 @@
+databaseChangeLog:
+    - changeSet:
+          id: create-item-table
+          author: jquero
+          changes:
+              - createTable:
+                    schema: public
+                    tableName: ITEMS
+                    columns:
+                        - column:
+                              name: ID
+                              type: int
+                              autoIncrement: true
+                              constraints:
+                                  primaryKey: true
+                                  nullable: false
+                        - column:
+                              name: ITEM_TYPE
+                              type: varchar(50)
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: NEED_FRIDGE
+                              type: boolean
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: WEIGHT
+                              type: int
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: CONTAINER_TYPE
+                              type: varchar(50)
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: NAME
+                              type: varchar(150)
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: CODE
+                              type: varchar(100)
+                              constraints:
+                                  nullable: false
+                        -   column:
+                                name: CLIENT_ID
+                                type: int
+                                constraints:
+                                    nullable: false
+                        - column:
+                              name: STATE
+                              type: varchar(150)
+                              constraints:
+                                  nullable: false
+                        - column:
+                              name: CREATE_DATA
+                              type: timestamp
+                              defaultValueComputed: CURRENT_TIMESTAMP
+                              constraints:
+                                  nullable: false
+                        -   column:
+                                name: MODIFIED_BY
+                                type: varchar(150)
+                        -   column:
+                                name: MODIFIED_DATA
+                                type: timestamp
+                                defaultValueComputed: CURRENT_TIMESTAMP
+
+
+    - changeSet:
+          id: create-user-table
+          author: jquero
+          changes:
+              - createTable:
+                    schema: public
+                    tableName: CLIENTS
+                    columns:
+                        - column:
+                              name: ID
+                              type: int
+                              autoIncrement: true
+                              constraints:
+                                    primaryKey: true
+                                    nullable: false
+                        - column:
+                              name: USER_NAME
+                              type: varchar(100)
+                              constraints:
+                                    nullable: false
+    -   changeSet:
+            id: create-code-table
+            author: jquero
+            changes:
+                -   createTable:
+                        schema: public
+                        tableName: CODE_SEQUENCE
+                        columns:
+                            -   column:
+                                    name: ID
+                                    type: int
+                                    autoIncrement: true
+                                    constraints:
+                                        primaryKey: true
+                                        nullable: false
+                            -   column:
+                                    name: NAME
+                                    type: varchar(100)
+                                    constraints:
+                                        nullable: false
+                            -   column:
+                                    name: CODE
+                                    type: int
+                                    constraints:
+                                        nullable: false

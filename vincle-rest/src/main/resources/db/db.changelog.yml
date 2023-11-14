@@ -1,0 +1,15 @@
+databaseChangeLog:
+
+    # Initial schema including
+    -   include:
+            file: create-schema.yml
+            relativeToChangelogFile: true
+    -   include:
+            file: code-data.yml
+            relativeToChangelogFile: true
+    -   include:
+            file: client-data.yml
+            relativeToChangelogFile: true
+    -   include:
+            file: item-data.yml
+            relativeToChangelogFile: true

@@ -1,0 +1,28 @@
+logging:
+    level:
+        org.springframework.data.r2dbc: DEBUG
+
+spring:
+    data:
+        r2dbc:
+            repositories:
+                enabled: true
+    r2dbc:
+        url: r2dbc:h2:mem:///vincledb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        name: vincledb
+        password:
+        username: sa
+
+
+
+    # Liquibase (schema update)
+    liquibase:
+        change-log: classpath:/db/db.changelog.yml
+        url: jdbc:h2:mem:vincledb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        user: sa
+        password:
+        drop-first: true
+
+
+    h2:
+        console.enabled: true

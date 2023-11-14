@@ -1,0 +1,42 @@
+databaseChangeLog:
+     - changeSet:
+            id: insert-code-data
+            author: jquero
+            comment: "FILL TABLE"
+            changes:
+                -   insert:
+                        tableName: CODE_SEQUENCE
+                        columns:
+                            -   column:
+                                    name: NAME
+                                    value: "DRINK"
+                            -   column:
+                                    name: CODE
+                                    value: 3
+                -   insert:
+                        tableName: CODE_SEQUENCE
+                        columns:
+                            -   column:
+                                    name: NAME
+                                    value: "FOOD"
+                            -   column:
+                                    name: CODE
+                                    value: 2
+                -   insert:
+                        tableName: CODE_SEQUENCE
+                        columns:
+                            -   column:
+                                    name: NAME
+                                    value: "SAUCE"
+                            -   column:
+                                    name: CODE
+                                    value: 1
+                -   insert:
+                        tableName: CODE_SEQUENCE
+                        columns:
+                            -   column:
+                                    name: NAME
+                                    value: "SPICE"
+                            -   column:
+                                    name: CODE
+                                    value: 1

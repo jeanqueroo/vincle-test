@@ -1,0 +1,34 @@
+<app-menu></app-menu>
+<form [formGroup]="createForm" (ngSubmit)="onFormSubmit()">
+    <mat-form-field class="input-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="select-width">
+        <mat-label>Item Type</mat-label>
+        <mat-select formControlName="itemType">
+            <mat-option *ngFor="let itemType of itemTypes;" [value]="itemType.value">{{itemType.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-radio-group aria-label="Need Fridge" formControlName="needFridge" class="input-width">
+        <label> Need Fridge </label>
+        <mat-radio-button value="1">Yes</mat-radio-button>
+        <mat-radio-button value="0">no</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field class="select-width">
+        <mat-label>Container Type</mat-label>
+        <mat-select formControlName="containerType">
+            <mat-option *ngFor="let containerType of containerTypes;" [value]="containerType.value">{{containerType.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input-width">
+        <mat-label>Weight</mat-label>
+        <input matInput placeholder="Weight" type="number" formControlName="weight">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="!createForm.valid">Save</button>
+</form>

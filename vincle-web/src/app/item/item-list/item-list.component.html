@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<form [formGroup]="searchForm" (ngSubmit)="onFormSubmit()">
+    <mat-form-field class="input-width">
+        <mat-label>Code</mat-label>
+        <input matInput placeholder="Code" formControlName="code">
+    </mat-form-field>
+
+    <mat-form-field class="select-width">
+        <mat-label>Item Type</mat-label>
+        <mat-select formControlName="itemType">
+            <mat-option *ngFor="let itemType of itemTypes;" [value]="itemType.value">{{itemType.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="!searchForm.valid">Search</button>
+</form>
+
+<table *ngIf="items.length > 0" mat-table [dataSource]="items" class="mat-elevation-z8">
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action" >
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="Delete" *ngIf="element.state !== 'DELETED'" (click)="deleteItem(element)">
+            <mat-icon>delete</mat-icon>
+        </button>
+            <button mat-icon-button aria-label="Edit" (click)="updateItem(element)">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

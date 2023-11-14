@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  vincle-rest:
+    image: vincle-rest:1.0
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: vincle-rest
+    ports:
+      - "8080:8080"
+  vincle-web:
+    image: vincle-web:1.0
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: vincle-web
+    ports:
+      - "80:80"
+  

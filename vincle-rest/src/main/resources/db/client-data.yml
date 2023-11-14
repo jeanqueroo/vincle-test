@@ -1,0 +1,12 @@
+databaseChangeLog:
+     - changeSet:
+            id: insert-client-data
+            author: jquero
+            comment: "FILL TABLE"
+            changes:
+                -   insert:
+                        tableName: CLIENTS
+                        columns:
+                            -   column:
+                                    name: USER_NAME
+                                    value: "jquero"
